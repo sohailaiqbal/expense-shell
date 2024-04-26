@@ -21,7 +21,6 @@ mkdir /app &>/tmp/expense.log
 
 echo -e "\e[35mDOWNLOADING APPLICATION CONTENT\e[0m"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>/tmp/expense.log
-
 cd /app
 
 echo -e "\e[36mEXTRACTING APPLICATION CONTENT\e[0m"
