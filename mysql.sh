@@ -1,5 +1,9 @@
 MYSQL_PASSWORD=$1
-source common.sh
+log_file=/tmp/expense.log
+
+Head() {
+  echo -e "\e[36m$1\e[0m"
+}
 
 Head "DISABLING OLC MYSQL VERSION"
 dnf module disable mysql -y
