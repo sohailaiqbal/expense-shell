@@ -28,7 +28,7 @@ cd /app
 echo -e "\e[36mEXTRACTING APPLICATION CONTENT\e[0m"
 unzip /tmp/backend.zip &>>/tmp/expense.log
 
-DOWNLOADING APPLICATION DEPENDENCIES
+ecco -e "\e[31mDOWNLOADING APPLICATION DEPENDENCIES\e[0m"
 npm install &>>/tmp/expense.log
 
 echo -e "\e[31mRELOADING SYSTEMD & START BACKEND SERVICE\e[0m"
