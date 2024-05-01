@@ -1,27 +1,23 @@
 MYSQL_PASSWORD=$1
-log_file=/tmp/expense.log
-
-Head() {
-  echo -e "\e[36m$1\e[0m"
-}
+source common.sh
 
 Head "DISABLING OLC MYSQL VERSION"
-dnf module disable mysql -y
+dnf module disable mysql -y &>>/tmp/expense.log
 echo $?
 
 Head "MYSQL REPO.FILE"
-cp mysql.repo /etc/yum.repos.d/mysql.repo
+cp mysql.repo /etc/yum.repos.d/mysql.repo &>>/tmp/expense.log
 echo $?
 
 Head "INSTALLING MYSQL"
-dnf install mysql-community-server -y
+dnf install mysql-community-server -y &>>/tmp/expense.log
 echo $?
 
 Head "ENABLING & STARTING MYSQL SERVICES"
-systemctl enable mysqld
-systemctl start mysqld
+systemctl enable mysqld &>>/tmp/expense.log
+systemctl start mysqld &>>/tmp/expense.log
 echo $?
 
 Head "SETTING DB PASSWORD"
-mysql_secure_installation --set-root-pass ${MYSQL_PASSWORD}
+mysql_secure_installation --set-root-pass ${MYSQL_PASSWORD} &>>/tmp/expense.log
 echo $?
