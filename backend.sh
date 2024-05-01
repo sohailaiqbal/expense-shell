@@ -3,7 +3,6 @@ log_file=/tmp/expense.log
 
 Head() {
   echo -e "\e[31m$1\e[0m"
-"
   }
 
 Head "DISABEL DEFAULT VERSION OF NODEJS"
