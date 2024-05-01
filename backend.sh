@@ -46,4 +46,3 @@ dnf install mysql -y &>>/tmp/expense.log
 
 Head "LOADING SCHEMA"
 mysql -h mysql-dev.sidevops.online -uroot -p${MYSQL_PASSWORD} < /app/schema/backend.sql &>>/tmp/expense.log
-}
