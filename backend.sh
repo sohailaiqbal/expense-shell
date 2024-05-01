@@ -1,43 +1,50 @@
 MYSQL_PASSWORD=$1
 log_file=/tmp/expense.log
-echo -e "\e[31mDISABEL DEFAULT VERSION OF NODEJS\e[0m"
+
+Head() {
+  echo -e "e\31m$1\e[0m"
+"
+  }
+
+Head "DISABEL DEFAULT VERSION OF NODEJS"
 dnf module disable nodejs -y &>>/tmp/expense.log
 
-echo -e "\e[31mENABLE NODEJS VERSION\e[0m"
+Head "ENABLE NODEJS VERSION"
 dnf module enable nodejs:18 -y &>>/tmp/expense.log
 
-echo -e "\e[32mINSTALL NODEJS\e[0m"
+Head "INSTALL NODEJS"
 dnf install nodejs -y &>>/tmp/expense.log
 
-echo -e "\e[31mecho CONFIGURE BACKEND SERVICE\e[0m"
+Head "CONFIGURE BACKEND SERVICE"
 cp backend.service /etc/systemd/system/backend.service &>>/tmp/expense.log
 
-echo -e "\e[33mADDING APPLICATION USER\e[0m"
+Head "ADDING APPLICATION USER"
 useradd expense &>>/tmp/expense.log
 
-echo -e "\e[31mREMOVING EXITING APP CONTENT\e[0m"
+Head "REMOVING EXITING APP CONTENT"
 rm -rf /app &>>/tmp/expense.log
 
-echo -e "\e[34mCREATING APPLICATION DIRECTORY\e[0m"
+Head "CREATING APPLICATION DIRECTORY"
 mkdir /app &>>/tmp/expense.log
 
-echo -e "\e[35mDOWNLOADING APPLICATION CONTENT\e[0m"
+Head "DOWNLOADING APPLICATION CONTENT"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>/tmp/expense.log
 cd /app
 
-echo -e "\e[36mEXTRACTING APPLICATION CONTENT\e[0m"
+Head "EXTRACTING APPLICATION CONTENT"
 unzip /tmp/backend.zip &>>/tmp/expense.log
 
-ecco -e "\e[31mDOWNLOADING APPLICATION DEPENDENCIES\e[0m"
+Head "DOWNLOADING APPLICATION DEPENDENCIES"
 npm install &>>/tmp/expense.log
 
-echo -e "\e[31mRELOADING SYSTEMD & START BACKEND SERVICE\e[0m"
+Head "RELOADING SYSTEMD & START BACKEND SERVICE"
 systemctl daemon-reload &>>/tmp/expense.log
 systemctl enable backend &>>/tmp/expense.log
 systemctl restart backend &>>/tmp/expense.log
 
-echo -e "\e[32mINSTALLING MYSQL CLIENT\e[0m"
+Head "INSTALLING MYSQL CLIENT"
 dnf install mysql -y &>>/tmp/expense.log
 
-echo -e "\e[33mLOADING SCHEMA\e[0m"
+Head "LOADING SCHEMA"
 mysql -h mysql-dev.sidevops.online -uroot -p${MYSQL_PASSWORD} < /app/schema/backend.sql &>>/tmp/expense.log
+}
