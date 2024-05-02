@@ -17,8 +17,9 @@ echo $?
 
 Head "DOWNLOADING APPLICATION CONTENT"
 curl -o /tmp/${component}.zip https://expense-artifacts.s3.amazonaws.com/${component}.zip &>>/tmp/expense.log
-cd $1
 echo $?
+
+cd $1
 
 Head "EXTRACTING APPLICATION CONTENT"
 unzip /tmp/${component}.zip &>>/tmp/expense.log
