@@ -1,5 +1,6 @@
-component=frontend
 source common.sh
+component=frontend
+
 
 Head "INSTALLING NGINX"
 dnf install nginx -y &>>/tmp/expense.log
