@@ -1,5 +1,6 @@
 MYSQL_PASSWORD=$1
 component=backend
+
 source common.sh
 
 Head "DISABEL DEFAULT VERSION OF NODEJS"
