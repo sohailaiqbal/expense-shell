@@ -1,5 +1,4 @@
 MYSQL_PASSWORD=$1
-
 component=backend
 
 source common.sh
