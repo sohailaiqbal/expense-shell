@@ -25,6 +25,3 @@ Head "EXTRACTING APPLICATION CONTENT"
 unzip /tmp/${component}.zip &>>/tmp/expense.log
 echo $?
 }
-
-
-
