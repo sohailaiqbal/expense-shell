@@ -22,7 +22,7 @@ Head "ADDING APPLICATION USER"
 useradd expense &>>/tmp/expense.log
 echo $?
 
-App_prereq "/app"
+App_Prereq "/app"
 
 Head "DOWNLOADING APPLICATION DEPENDENCIES"
 npm install &>>/tmp/expense.log
