@@ -1,4 +1,5 @@
 MYSQL_PASSWORD=$1
+log_file=/tmp/expense.log
 component=backend
 
 source common.sh
