@@ -1,6 +1,5 @@
 MYSQL_PASSWORD=$1
 component=backend
-
 source common.sh
 
 Head "DISABEL DEFAULT VERSION OF NODEJS"
@@ -29,6 +28,7 @@ else
   echo FAILURE
   exit 1
 fi
+
 Head "CONFIGURE BACKEND SERVICE"
 cp backend.service /etc/systemd/system/backend.service &>>/tmp/expense.log
 if [ $? -eq 0 ]; then
