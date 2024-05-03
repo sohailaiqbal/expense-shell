@@ -4,7 +4,7 @@ component=backend
 source common.sh
 
 
-Head "DISABEL DEFAULT VERSION OF NODEJS"
+Head "DISABLE DEFAULT VERSION OF NODEJS"
 dnf module disable nodejs -y &>>/tmp/expense.log
 if [ $? -eq 0 ]; then
   echo SUCCESS
